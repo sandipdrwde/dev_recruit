@@ -1,0 +1,56 @@
+.bs-callout {
+    padding: 20px;
+    margin: 20px 0;
+    border: 1px solid #eee;
+    border-left-width: 7px;
+    border-radius: 0px;
+}
+.bs-callout h4 {
+    margin-top: 0;
+    margin-bottom: 5px;
+}
+.bs-callout p:last-child {
+    margin-bottom: 0;
+}
+.bs-callout code {
+    border-radius: 3px;
+}
+.bs-callout+.bs-callout {
+    margin-top: -5px;
+}
+.bs-callout-default {
+    border-left-color: #333333;
+}
+.bs-callout-default h4 {
+    color: #333333;
+}
+.bs-callout-primary {
+    border-left-color: #4397C9;
+}
+.bs-callout-primary h4 {
+    color: #4397C9;
+}
+.bs-callout-success {
+    border-left-color: #73C59B;
+}
+.bs-callout-success h4 {
+    color: #73C59B;
+}
+.bs-callout-danger {
+    border-left-color: #F46A48;
+}
+.bs-callout-danger h4 {
+    color: #F46A48;
+}
+.bs-callout-warning {
+    border-left-color: #f0ad4e;
+}
+.bs-callout-warning h4 {
+    color: #f0ad4e;
+}
+.bs-callout-info {
+    border-left-color: #AB5FC5;
+}
+.bs-callout-info h4 {
+    color: #AB5FC5;
+}

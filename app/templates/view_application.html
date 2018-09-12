@@ -1,0 +1,137 @@
+{% extends "header.html" %}
+{% block body %}
+
+<!-- Page Heading -->
+<div class="row" style="margin-top: -25px;">
+    <div class="col-lg-12" style="background-color: #F8F9F9">
+        <h3 class="page-header"><b>Admin Dashboard</b></h3>
+    </div>
+</div>
+<!-- /.row -->
+
+{% with messages = get_flashed_messages() %}
+    {% if messages %}
+        {% for message in messages %}
+        <div class="alert alert-success alert-dismissible" role="alert" style="margin: 10px">
+            {{message}}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span></button>
+        </div>
+        {% endfor %}
+    {% endif %}
+{% endwith %}
+
+
+{% if error %}
+
+    <div class="alert alert-danger" role="alert" style="margin: 10px">
+        <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+        <span class="sr-only">Error:</span>
+        {{ error | capitalize }}
+    </div>
+    
+{% endif %}
+
+<!-- ================================================================================================================================= -->
+<!-- ================================================================================================================================= -->
+
+
+<div class="row">
+<div class="panel panel-primary">
+<div class="panel-heading"><h3 class="panel-title"><b>Application Details</b></h3></div>
+<div class="panel-body" style="padding-left: 50px;">
+
+  <div class="col-sm-6 col-md-12">
+    <div class="thumbnail">
+      <div class="caption">
+        <h4><font color="blue"><b>Basic Details</b></font></h4>
+        <p><div class="col-sm-6"><label class="new-label">First Name: </label>&nbsp&nbsp<b>{{data.first_name}}</b></div>
+            <div class="col-sm-6"><label class="new-label">Last Name: </label>&nbsp&nbsp<b>{{data.last_name}}</b></div>
+            <div class="col-md-6"><label class="new-label">Date of Birth: </label>&nbsp&nbsp{{data.dob.strftime('%d/%m/%Y')}}</div>
+            <div class="col-md-6"><label class="new-label">Gender: </label>&nbsp&nbsp{{data.gender}}</div>
+            
+            <div class="col-md-6"><label class="new-label">Email Id: </label>&nbsp&nbsp{{data.email}}</div>
+            <div class="col-md-6"><label class="new-label">Mobile Number: </label>&nbsp&nbsp{{data.mobile_number}}</div>
+            {% if data.address %}
+            <div class="col-md-6"><label class="new-label">Address: </label>&nbsp&nbsp{{data.address}}</div>
+            {% endif %}
+
+            {% if data.pincode %}
+            <div class="col-sm-6"><label class="new-label">Pincode: </label>&nbsp&nbsp{{data.pincode}}</div>
+            {% endif %}
+        </p><br><br><br><br><br>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="col-sm-6 col-md-12">
+    <div class="thumbnail">
+      <div class="caption">
+        <h4><font color="blue"><b>Other Details</b></font></h4>
+        <p><div class="col-sm-6"><label class="new-label">Notice Period: </label>&nbsp&nbsp{{data.notice_period}}</div>
+            <div class="col-sm-6"><label class="new-label">Total Experience: </label>&nbsp&nbsp{{data.experience}}</div>
+            <div class="col-md-6"><label class="new-label">Current Annual Salary: </label>&nbsp&nbsp{{data.current_ctc}}</div>
+            <div class="col-md-6"><label class="new-label">Expected Annual Salary: </label>&nbsp&nbsp{{data.expected_ctc}}</div>
+        </p><br><br><br>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-sm-6 col-md-12">
+    <div class="thumbnail">
+      <div class="caption">
+        <h4><font color="blue"><b>Resume</b></font></h4>
+        <p>
+        <div class="col-sm-6">
+            <label class="new-label">Resume </label>
+            <a id='dwnldLnk' download='resume.pdf' style="display:none;" />
+            <a onclick="downloadPDF();" title='resume.pdf'>
+            <button type="button" class="btn btn-sm btn-primary">
+            <span class="glyphicon glyphicon-download-alt" aria-hidden="true"> Download</span></button></a>
+        </div>
+
+        <div class="col-sm-6"><label class="new-label">Application: </label>&nbsp&nbsp
+
+                <a href="{{ url_for('app_status', app_id = data.applicant_id, status='accepted') }}" title="Submit ?" 
+                data-toggle="confirmation" data-singleton="true" data-popout="true">
+                <button type="button" class="btn btn-sm btn-success">Accept</button></a>
+
+                <a href="{{ url_for('app_status', app_id = data.applicant_id, status='rejected') }}" title="Submit ?" 
+                data-toggle="confirmation" data-singleton="true" data-popout="true">
+                <button type="button" class="btn btn-sm btn-danger">Reject</button></a>
+            
+      </div>
+        </p><br><br><br>
+      </div>
+    </div>
+  </div>
+
+
+
+
+</div>
+</div>
+</div>
+
+<script type="text/javascript">
+    window.downloadPDF = function downloadPDF() {
+    var dlnk = document.getElementById('dwnldLnk');
+    dlnk.href = pdf;
+    dlnk.click();
+}
+    var pdf = 'data:application/octet-stream;base64,' + '{{ data.upload_file }}';
+
+</script>
+
+
+
+
+{% endblock %}
+
+
+
+
+
+
+

@@ -1,0 +1,398 @@
+{% extends "header.html" %}
+{% block body %}
+
+<!-- Page Heading -->
+<div class="row" style="margin-top: -25px;">
+    <div class="col-lg-12" style="background-color: #F8F9F9">
+        <h3 class="page-header"><b>Fill Application Details</b></h3>
+        <font class="navbar-right" style="margin-right: 10px;" size="2">
+        <font color="red">Note: </font>All <font color="red">*</font> fields are mandatory</font>
+    </div>
+</div>
+<!-- /.row -->
+
+{% with messages = get_flashed_messages() %}
+    {% if messages %}
+        {% for message in messages %}
+        <div class="alert alert-success alert-dismissible" role="alert" style="margin: 10px">
+            {{message}}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span></button>
+        </div>
+        {% endfor %}
+    {% endif %}
+{% endwith %}
+
+
+{% if error %}
+
+    <div class="alert alert-danger" role="alert" style="margin: 10px">
+        <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+        <span class="sr-only">Error:</span>
+        {{ error | capitalize }}
+    </div>
+    
+{% endif %}
+
+<!-- ================================================================================================================================= -->
+<!-- ================================================================================================================================= -->
+
+
+
+
+<div class="row">
+<div class="panel panel-primary">
+<div class="panel-body" style="padding-left: 70px;">
+
+    <form class="form-horizontal" id="basicform" method="POST" autocomplete="off" enctype=multipart/form-data>
+        <label ><font color="blue">Basic Details</font></label><hr>
+        <div class="row">
+            <div class="col-lg-6">
+                <label class="new-label">First Name <font color="red"> *</font></label>
+                <div class="form-group">
+                    <div class="col-sm-10">
+                        <input class="form-control" type="text" name="firstname" value="">
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <label class="new-label">Last Name <font color="red"> *</font></label>
+                <div class="form-group">
+                    <div class="col-sm-10">
+                        <input class="form-control" type="text" name="lastname" value="">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-6">
+                <label class="new-label">Gender <font color="red"> *</font></label>
+                <div class="form-group">
+                    <div class="col-sm-10">
+                    <select class="form-control" name="gender" style="border-radius: 0">
+                        <option class="text-muted" value=""> Select Gender </option>
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                    </select>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <label class="new-label">Date of Birth <font color="red"> *</font></label>
+                <div class="form-group">
+                    <div class="col-sm-10">
+                        <input class="form-control datepicker" type="text" name="dob" placeholder="DD/MM/YYYY">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-lg-6">
+                <label class="new-label">Email Id <font color="red"> *</font></label>
+                <div class="form-group">
+                    <div class="col-sm-10">
+                        <input class="form-control" type="text" name="emailid">
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <label class="new-label">Mobile Number <font color="red"> *</font></label>
+                <div class="form-group">
+                    <div class="col-sm-10">
+                        <input class="form-control" type="text" name="mobile">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-6">
+                <label class="new-label">Address</label>
+                <div class="form-group">
+                    <div class="col-sm-10">
+                        <textarea class="form-control" name="address" rows="2"></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <label class="new-label">Pincode</label>
+                <div class="form-group">
+                    <div class="col-sm-10">
+                        <input class="form-control" type="text" name="pincode" value="">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <label><font color="blue">Other Details</font></label><hr>
+        <div class="row">
+            <div class="col-lg-6">
+                <label class="new-label">Notice Period <font color="red"> *</font></label>
+                <div class="form-group">
+                    <div class="col-sm-10">
+                        <input class="form-control" type="text" name="notice_period" value="">
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <label class="new-label">Total Experience <font color="red"> *</font></label>
+                <div class="form-group">
+                    <div class="col-sm-10">
+                        <input class="form-control" type="text" name="experience" value="">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-6">
+                <label class="new-label">Current Annual Salary <font color="red"> *</font></label>
+                <div class="form-group">
+                    <div class="col-sm-10">
+                        <input class="form-control" type="text" name="ctc" value="">
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <label class="new-label">Expected Annual Salary <font color="red"> *</font></label>
+                <div class="form-group">
+                    <div class="col-sm-10">
+                        <input class="form-control" type="text" name="etc" value="">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <label ><font color="blue">Upload Resume</font><font color="red"> *</font></label><hr>
+
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="form-group">
+                    <div class="col-sm-10">
+                        <input class="file-loading" id="input-files" name="inputfile" type="file" 
+                        data-allowed-file-extensions = '["pdf"]' multiple>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="form-group">
+                    <div class="col-sm-8">
+                        <button type="submit" class="btn btn-primary">&nbsp; Submit &nbsp;</button>
+                        <button type="reset" id="breset" class="btn btn-default">&nbsp; Reset &nbsp;</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </form>
+</div>
+</div>
+</div>
+<br><br><br>
+
+    <script type="text/javascript">
+    $("#input-files").fileinput({
+        language: 'en',
+        showCaption: true,
+        showPreview: true,
+        showRemove: false,
+        showUpload: false,
+        showCancel: true,
+        dropZoneEnabled: true,
+        dropZoneTitle: 'Browse files here',
+        showUploadedThumbs: false,
+        browseOnZoneClick: false,
+        minFileCount: 1,
+        maxFileCount: 4,
+        previewFileIcon: '<i class="fa fa-file"></i>',
+        allowedPreviewTypes: ['image', 'text'],
+        previewFileIconSettings: {
+            'doc': '<i class="fa fa-file-word-o text-primary"></i>',
+            'xls': '<i class="fa fa-file-excel-o text-success"></i>',
+            'ppt': '<i class="fa fa-file-powerpoint-o text-danger"></i>',
+            'jpg': '<i class="fa fa-file-photo-o text-warning"></i>',
+            'pdf': '<i class="fa fa-file-pdf-o text-danger"></i>',
+            'zip': '<i class="fa fa-file-archive-o text-muted"></i>',
+            'htm': '<i class="fa fa-file-code-o text-info"></i>',
+            'txt': '<i class="fa fa-file-text-o text-info"></i>',
+            'mov': '<i class="fa fa-file-movie-o text-warning"></i>',
+            'mp3': '<i class="fa fa-file-audio-o text-warning"></i>',
+        },
+        layoutTemplates:{
+            actionUpload:'',
+            actionDelete:'',
+        },
+        maxFileSize: 50,
+        previewFileExtSettings: {
+            'doc': function(ext) {
+                return ext.match(/(doc|docx)$/i);
+            },
+            'xls': function(ext) {
+                return ext.match(/(xls|xlsx)$/i);
+            },
+            'txt': function(ext) {
+                return ext.match(/(txt|ini|md)$/i);
+            },
+        }
+    });
+    </script>
+
+
+<script type="text/javascript">
+    $('.datepicker').datepicker({
+        format : 'dd/mm/yyyy',
+        todayHighlight : true,
+        // startDate : '-50y',
+        endDate : '0y',
+        autoclose : true,
+        // orientation: 'auto top'
+    })
+</script>
+
+
+<script type="text/javascript">
+    $(document).ready(function() {
+    $('.datepicker').on('changeDate', function(e) {
+        // Revalidate the date when user change it
+        $('#basicform').bootstrapValidator('revalidateField', 'dob');
+    });
+    $('#basicform').bootstrapValidator({
+        framework: 'bootstrap',
+
+        fields: {
+            firstname: {
+                validators: {
+                    notEmpty: {
+                        message: 'First Name is required'
+                    },
+                    stringLength: {
+                        max: 20,
+                        message: 'Maximum 20 characters only'
+                    },                    
+                }
+            },
+            lastname: {
+                validators: {
+                    notEmpty: {
+                        message: 'Last Name is required'
+                    },
+                    stringLength: {
+                        max: 20,
+                        message: 'Maximum 20 characters only'
+                    },                    
+                }
+            },             
+
+            dob:{
+                validators: {
+                    notEmpty: {
+                        message: 'Date of birth is required'
+                    },
+                    date: {
+                        format: 'DD/MM/YYYY',
+                        message: 'The value is not a valid date'
+                    }             
+                }
+            }, 
+
+            gender:{
+                validators: {
+                    notEmpty: {
+                        message: 'Gender is required'
+                    },                   
+                }
+            },
+
+            emailid: {
+                validators: {
+                    notEmpty: {
+                        message: 'Email Id is required'
+                    },
+                    emailAddress: {
+                        message: 'Please enter valid email id'
+                    },
+                    stringLength: {
+                        max: 50,
+                        message: 'Maximum 50 characters only'
+                    },             
+                }
+            },
+
+            mobile: {
+                validators: {
+                    notEmpty: {
+                        message: 'Mobile number is required'
+                    },
+                    regexp: {
+                        regexp: /^[0-9]{10}$/,
+                        message: 'Mobile number must have 10 digits'
+                    },
+                }
+            },
+
+            pincode: {
+                validators: {
+                    stringLength: {
+                        max: 6,
+                        message: 'Maximum 6 characters only'
+                    },             
+                }
+            },
+
+            notice_period: {
+                validators: {
+                    notEmpty: {
+                        message: 'Notice Period is required'
+                    },
+                    stringLength: {
+                        max: 20,
+                        message: 'Maximum 10 characters only'
+                    },                    
+                }
+            },
+
+            experience: {
+                validators: {
+                    notEmpty: {
+                        message: 'Total Experience is required'
+                    },
+                    stringLength: {
+                        max: 20,
+                        message: 'Maximum 10 characters only'
+                    },                    
+                }
+            },
+            ctc: {
+                validators: {
+                    notEmpty: {
+                        message: 'Current Annual Salary is required'
+                    },
+                    stringLength: {
+                        max: 20,
+                        message: 'Maximum 20 characters only'
+                    },                    
+                }
+            },
+            etc: {
+                validators: {
+                    notEmpty: {
+                        message: 'Expected Annual Salary is required'
+                    },
+                    stringLength: {
+                        max: 20,
+                        message: 'Maximum 20 characters only'
+                    },                    
+                }
+            },                                                
+        }
+    });
+});
+$("#breset").click(function(){
+    $('#basicform').data('bootstrapValidator').resetForm();
+});
+</script>
+{% endblock %}
+

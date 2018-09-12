@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Dashboard</title>
+    <!-- Bootstrap core CSS -->
+<link rel="icon" href="{{ url_for('static', filename='images/favicon.ico') }}">
+
+    <!-- Bootstrap Core CSS -->
+    <link href="/static/css/bootstrap.css" rel="stylesheet">
+    <link href="/static/css/bootstrap-theme.min.css" rel="stylesheet">
+    <link href="/static/css/callout.css" rel="stylesheet">
+    <link href="/static/css/bootstrap-datepicker.css" rel="stylesheet">
+    <link href="/static/css/bootstrapValidator.css" rel="stylesheet">
+    <link href="/static/css/fileinput.css" rel="stylesheet">
+    <!-- Custom Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+    <!-- jQuery -->
+    <script type="text/javascript" src="/static/js/jquery.js"></script>
+    <script type="text/javascript" src="/static/js/fileinput.js"></script>
+    <!-- Bootstrap Core JavaScript -->
+    <script type="text/javascript" src="/static/js/bootstrap-datepicker.js"></script>
+    <script type="text/javascript" src="/static/js/bootstrap.js"></script>
+    <script type="text/javascript" src="/static/js/bootstrapValidator.js"></script>
+    <script type="text/javascript" src="/static/js/moment.min.js"></script>
+    <script type="text/javascript" src="/static/js/bootstrap-confirmation.min.js"></script>
+    <script type="text/javascript" src="/static/js/jquery.blockUI.js"></script>
+
+</head>
+
+<header>
+    <nav class="navbar navbar-default navbar-fixed-top" style="background: #E5E4E2;">
+    <div class="container-fluid">
+
+      <div class="navbar-header">
+        <img style="max-width: 100px; margin-top:14px;" src = "{{ url_for('static', filename='images/logo.png') }}">
+      </div>
+
+      {% if session.logged_in and session.username == "admin" %}
+      <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-left">
+            <li><a href="/admin_page/"><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalLogin">
+            <span class="glyphicon glyphicon-home"></span>&nbsp;&nbsp;Home</button></a></li>
+          </ul>
+
+          <ul class="nav navbar-nav navbar-right">
+          {% if session.logged_in and session.username == "admin" %}
+            <li><a href="/admin_page/"> Welcome <button type="button" class="btn btn-default">
+            {{ session.username }}</button></a></li>
+            <li><a href="/logout/"><button type="button" class="btn btn-primary">Logout</button></a></li>
+          {% else %}
+          <li><a href="/admin_page/"> Welcome <button type="button" class="btn btn-default">{{ session.username }}</button></a></li>
+          {% endif %}
+          </ul>
+      </div>
+      {% else %}
+      <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-left">
+            <li><a href="/"><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalLogin">
+            <span class="glyphicon glyphicon-home"></span>&nbsp;&nbsp;Home</button></a></li>
+          </ul>
+
+          <ul class="nav navbar-nav navbar-right">
+            <li>
+              <a href="/"> Welcome <button type="button" class="btn btn-default">Guest</button></a>
+            </li>
+          </ul>
+      </div>
+      {% endif %}
+
+
+      </div>
+    </nav>
+</header>
+
+<br>
+<body>
+    <div id="wrapper">
+        <div class="panel panel-default" style="height: 100%;  border: none; border-radius: 0px;">
+            <div class="container-fluid">
+                <div class="panel panel-default" style="border: none; margin :70px 200px 15px 200px">
+                {% block body %}{% endblock %}
+                </div>
+                <!-- /.inner panel -->
+            </div>
+            <!-- /.container-fluid -->
+        </div>
+        <!-- /.outer panel -->
+    </div>
+    <!-- /.wraper background-color: #F8F9F9; -->
+</body>
+
+</html>

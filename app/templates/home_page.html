@@ -1,0 +1,73 @@
+{% extends "header.html" %}
+{% block body %}
+
+<!-- Page Heading -->
+<div class="row" style="margin-top: -25px;">
+    <div class="col-lg-12" style="background-color: #F8F9F9">
+        <h3 class="page-header"><b>JOB LISTING</b></h3>
+    </div>
+</div>
+<!-- /.row -->
+
+{% with messages = get_flashed_messages() %}
+    {% if messages %}
+        {% for message in messages %}
+        <div class="alert alert-success alert-dismissible" role="alert" style="margin: 10px">
+            {{message}}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span></button>
+        </div>
+        {% endfor %}
+    {% endif %}
+{% endwith %}
+
+
+{% if error %}
+
+    <div class="alert alert-danger" role="alert" style="margin: 10px">
+        <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+        <span class="sr-only">Error:</span>
+        {{ error | capitalize }}
+    </div>
+    
+{% endif %}
+
+<!-- ================================================================================================================================= -->
+<!-- ================================================================================================================================= -->
+<div class="row">
+
+  <div class="col-sm-6 col-md-4">
+    <div class="thumbnail">
+      <div class="caption">
+        <h3>Python Developer</h3>
+        <p>Role : Application Developer Role Description : Design, build and configure applications to meet business process and application requirements. Must have Skills : Python Scripting <br>Responsibilities: 1 Python 2 Must have strong SQL skills 3 Must have GIT, Jenkins experience 4 Linux shell scripting nice to have 5 Good written and oral communication skills </p>
+        <p><a href="/apply/" class="btn btn-primary" role="button">Apply</a></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-sm-6 col-md-4">
+    <div class="thumbnail">
+      <div class="caption">
+        <h3>Python Developer</h3>
+        <p>Role : Application Developer Role Description : Design, build and configure applications to meet business process and application requirements. Must have Skills : Python Scripting <br>Responsibilities: 1 Python 2 Must have strong SQL skills 3 Must have GIT, Jenkins experience 4 Linux shell scripting nice to have 5 Good written and oral communication skills </p>
+        <p><a href="/apply/" class="btn btn-primary" role="button">Apply</a></p>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="col-sm-6 col-md-4">
+    <div class="thumbnail">
+      <div class="caption">
+        <h3>Python Developer</h3>
+        <p>Role : Application Developer Role Description : Design, build and configure applications to meet business process and application requirements. Must have Skills : Python Scripting <br>Responsibilities: 1 Python 2 Must have strong SQL skills 3 Must have GIT, Jenkins experience 4 Linux shell scripting nice to have 5 Good written and oral communication skills </p>
+        <p><a href="/apply/" class="btn btn-primary" role="button">Apply</a></p>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+{% endblock %}
