@@ -6,7 +6,7 @@ import base64
 
 from app import app, db
 from app.models import ApplicationDetail, ApplicationStatus
-import os, sys,gc
+import os, sys, gc
 
 
 #=========================================================================================================================#
