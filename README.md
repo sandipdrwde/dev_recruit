@@ -36,6 +36,7 @@ Recruitement portal
 
   3]  Update the dev_recruit/sys_config.py file with database credentials
       like host, username, password, database name, 
+      
   4]  Run the dev_recruit/requirements.txt file to install dependancies 
       
       pip install -r requirements.txt 
